@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /constituencies/{document=**} {
+      allow read: if true;
+      allow write: if false; // Only written via Admin SDK
+    }
+    match /myths/{document=**} {
+      allow read: if true;
+      allow write: if false; // Only written via server/Admin SDK
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
