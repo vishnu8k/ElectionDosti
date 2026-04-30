@@ -3,12 +3,23 @@ import {notFound} from 'next/navigation';
 
 const locales = ['en', 'hi', 'ta', 'te', 'kn', 'bn'];
 
-export default getRequestConfig(async ({locale}) => {
+export default getRequestConfig(async ({requestLocale}) => {
+  let locale = await requestLocale;
+  console.log("i18n.ts invoked with locale:", locale);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  if (!locales.includes(locale as any)) notFound();
+  if (!locale || !locales.includes(locale as any)) {
+    console.log("Locale not found in locales array, falling back to en");
+    locale = 'en';
+  }
 
-  return {
-    locale: locale as string,
-    messages: (await import(`./lib/i18n/messages/${locale}.json`)).default
-  };
+  try {
+    const messages = (await import(`./lib/i18n/messages/${locale}.json`)).default;
+    return {
+      locale: locale as string,
+      messages
+    };
+  } catch (error) {
+    console.error("Error loading messages for locale:", locale, error);
+    notFound();
+  }
 });
