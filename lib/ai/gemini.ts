@@ -14,7 +14,7 @@ export function getGeminiModel(systemInstruction?: string) {
     });
   }
   return vertex_ai.getGenerativeModel({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-2.5-flash',
     systemInstruction,
     generationConfig: {
       maxOutputTokens: 1024,
