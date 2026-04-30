@@ -21,6 +21,8 @@ RUN addgroup --system --gid 1001 nodejs && \
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copy next-intl messages folder because Next.js standalone tracer ignores dynamic imports
+COPY --from=builder --chown=nextjs:nodejs /app/lib/i18n/messages ./lib/i18n/messages
 USER nextjs
 ENV HOSTNAME 0.0.0.0
 CMD ["node", "server.js"]
