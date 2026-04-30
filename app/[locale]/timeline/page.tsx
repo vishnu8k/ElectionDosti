@@ -11,119 +11,44 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Static timeline data based on 2024 Indian General Election (18th Lok Sabha)
+// Projected timeline data based on upcoming 2026 State Assembly Elections
 const electionData: Record<string, Array<{ id: string; nameEn: string; phase: number; pollDate: string; type: string }>> = {
-  'Uttar Pradesh': [
-    { id: 'up1', nameEn: 'Saharanpur', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'up2', nameEn: 'Kairana', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'up3', nameEn: 'Muzaffarnagar', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'up4', nameEn: 'Rampur', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'up5', nameEn: 'Sambhal', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'up6', nameEn: 'Firozabad', phase: 3, pollDate: '2024-05-07', type: 'Lok Sabha' },
-    { id: 'up7', nameEn: 'Mainpuri', phase: 3, pollDate: '2024-05-07', type: 'Lok Sabha' },
-    { id: 'up8', nameEn: 'Kannauj', phase: 3, pollDate: '2024-05-07', type: 'Lok Sabha' },
-    { id: 'up9', nameEn: 'Lucknow', phase: 5, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'up10', nameEn: 'Rae Bareli', phase: 5, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'up11', nameEn: 'Amethi', phase: 5, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'up12', nameEn: 'Varanasi', phase: 7, pollDate: '2024-06-01', type: 'Lok Sabha' },
-    { id: 'up13', nameEn: 'Allahabad', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
-    { id: 'up14', nameEn: 'Gorakhpur', phase: 7, pollDate: '2024-06-01', type: 'Lok Sabha' },
-  ],
-  'Maharashtra': [
-    { id: 'mh1', nameEn: 'Mumbai North', phase: 6, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'mh2', nameEn: 'Mumbai North West', phase: 6, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'mh3', nameEn: 'Mumbai North East', phase: 6, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'mh4', nameEn: 'Mumbai North Central', phase: 6, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'mh5', nameEn: 'Mumbai South Central', phase: 6, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'mh6', nameEn: 'Mumbai South', phase: 6, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'mh7', nameEn: 'Pune', phase: 6, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'mh8', nameEn: 'Nashik', phase: 5, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'mh9', nameEn: 'Aurangabad', phase: 5, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'mh10', nameEn: 'Nagpur', phase: 4, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'mh11', nameEn: 'Amravati', phase: 4, pollDate: '2024-05-13', type: 'Lok Sabha' },
+  'Tamil Nadu': [
+    { id: 'tn1', nameEn: 'Chennai District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'tn2', nameEn: 'Coimbatore District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'tn3', nameEn: 'Madurai District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'tn4', nameEn: 'Tiruchirappalli District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'tn5', nameEn: 'Salem District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'tn6', nameEn: 'Tirunelveli District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'tn7', nameEn: 'Erode District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
   ],
   'West Bengal': [
-    { id: 'wb1', nameEn: 'Cooch Behar', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'wb2', nameEn: 'Alipurduars', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'wb3', nameEn: 'Jalpaiguri', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'wb4', nameEn: 'Darjeeling', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'wb5', nameEn: 'Kolkata North', phase: 7, pollDate: '2024-06-01', type: 'Lok Sabha' },
-    { id: 'wb6', nameEn: 'Kolkata South', phase: 7, pollDate: '2024-06-01', type: 'Lok Sabha' },
-    { id: 'wb7', nameEn: 'Jadavpur', phase: 7, pollDate: '2024-06-01', type: 'Lok Sabha' },
-    { id: 'wb8', nameEn: 'Diamond Harbour', phase: 7, pollDate: '2024-06-01', type: 'Lok Sabha' },
-    { id: 'wb9', nameEn: 'Howrah', phase: 7, pollDate: '2024-06-01', type: 'Lok Sabha' },
-    { id: 'wb10', nameEn: 'Hooghly', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
+    { id: 'wb1', nameEn: 'Bankura & Purulia', phase: 1, pollDate: '2026-03-27', type: 'Assembly' },
+    { id: 'wb2', nameEn: 'Paschim Medinipur', phase: 2, pollDate: '2026-04-01', type: 'Assembly' },
+    { id: 'wb3', nameEn: 'Howrah & Hooghly', phase: 3, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'wb4', nameEn: 'Cooch Behar & Alipurduar', phase: 4, pollDate: '2026-04-10', type: 'Assembly' },
+    { id: 'wb5', nameEn: 'Darjeeling & Jalpaiguri', phase: 5, pollDate: '2026-04-17', type: 'Assembly' },
+    { id: 'wb6', nameEn: 'North 24 Parganas', phase: 6, pollDate: '2026-04-22', type: 'Assembly' },
+    { id: 'wb7', nameEn: 'Kolkata & South 24 Parganas', phase: 7, pollDate: '2026-04-26', type: 'Assembly' },
+    { id: 'wb8', nameEn: 'Birbhum & Murshidabad', phase: 8, pollDate: '2026-04-29', type: 'Assembly' },
   ],
-  'Bihar': [
-    { id: 'br1', nameEn: 'Aurangabad', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'br2', nameEn: 'Gaya', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'br3', nameEn: 'Nawada', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'br4', nameEn: 'Patna Sahib', phase: 3, pollDate: '2024-05-07', type: 'Lok Sabha' },
-    { id: 'br5', nameEn: 'Patliputra', phase: 3, pollDate: '2024-05-07', type: 'Lok Sabha' },
-    { id: 'br6', nameEn: 'Muzaffarpur', phase: 4, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'br7', nameEn: 'Sitamarhi', phase: 4, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'br8', nameEn: 'Madhubani', phase: 5, pollDate: '2024-05-20', type: 'Lok Sabha' },
-    { id: 'br9', nameEn: 'Darbhanga', phase: 5, pollDate: '2024-05-20', type: 'Lok Sabha' },
+  'Kerala': [
+    { id: 'kl1', nameEn: 'Thiruvananthapuram', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'kl2', nameEn: 'Ernakulam', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'kl3', nameEn: 'Kozhikode', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'kl4', nameEn: 'Thrissur', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'kl5', nameEn: 'Malappuram', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
   ],
-  'Tamil Nadu': [
-    { id: 'tn1', nameEn: 'Chennai North', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn2', nameEn: 'Chennai South', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn3', nameEn: 'Chennai Central', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn4', nameEn: 'Coimbatore', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn5', nameEn: 'Madurai', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn6', nameEn: 'Trichy', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn7', nameEn: 'Salem', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn8', nameEn: 'Erode', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn9', nameEn: 'Tirunelveli', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'tn10', nameEn: 'Vellore', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
+  'Assam': [
+    { id: 'as1', nameEn: 'Upper Assam', phase: 1, pollDate: '2026-03-27', type: 'Assembly' },
+    { id: 'as2', nameEn: 'Barak Valley & Central Assam', phase: 2, pollDate: '2026-04-01', type: 'Assembly' },
+    { id: 'as3', nameEn: 'Lower Assam', phase: 3, pollDate: '2026-04-06', type: 'Assembly' },
   ],
-  'Madhya Pradesh': [
-    { id: 'mp1', nameEn: 'Bhopal', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'mp2', nameEn: 'Indore', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'mp3', nameEn: 'Gwalior', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'mp4', nameEn: 'Jabalpur', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'mp5', nameEn: 'Ujjain', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'mp6', nameEn: 'Ratlam', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'mp7', nameEn: 'Morena', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'mp8', nameEn: 'Khajuraho', phase: 3, pollDate: '2024-05-07', type: 'Lok Sabha' },
-    { id: 'mp9', nameEn: 'Damoh', phase: 3, pollDate: '2024-05-07', type: 'Lok Sabha' },
-    { id: 'mp10', nameEn: 'Satna', phase: 3, pollDate: '2024-05-07', type: 'Lok Sabha' },
-  ],
-  'Rajasthan': [
-    { id: 'rj1', nameEn: 'Jaipur', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'rj2', nameEn: 'Jodhpur', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'rj3', nameEn: 'Udaipur', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'rj4', nameEn: 'Ajmer', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'rj5', nameEn: 'Bikaner', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'rj6', nameEn: 'Kota', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'rj7', nameEn: 'Alwar', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-  ],
-  'Karnataka': [
-    { id: 'ka1', nameEn: 'Bengaluru North', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'ka2', nameEn: 'Bengaluru South', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'ka3', nameEn: 'Bengaluru Central', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'ka4', nameEn: 'Mysuru', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'ka5', nameEn: 'Mangaluru', phase: 2, pollDate: '2024-04-26', type: 'Lok Sabha' },
-    { id: 'ka6', nameEn: 'Hubli-Dharwad', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-    { id: 'ka7', nameEn: 'Gulbarga', phase: 1, pollDate: '2024-04-19', type: 'Lok Sabha' },
-  ],
-  'Andhra Pradesh': [
-    { id: 'ap1', nameEn: 'Visakhapatnam', phase: 1, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'ap2', nameEn: 'Vijayawada', phase: 1, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'ap3', nameEn: 'Guntur', phase: 1, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'ap4', nameEn: 'Nellore', phase: 1, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'ap5', nameEn: 'Kurnool', phase: 1, pollDate: '2024-05-13', type: 'Lok Sabha' },
-    { id: 'ap6', nameEn: 'Tirupati', phase: 1, pollDate: '2024-05-13', type: 'Lok Sabha' },
-  ],
-  'Delhi': [
-    { id: 'dl1', nameEn: 'Chandni Chowk', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
-    { id: 'dl2', nameEn: 'North East Delhi', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
-    { id: 'dl3', nameEn: 'East Delhi', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
-    { id: 'dl4', nameEn: 'New Delhi', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
-    { id: 'dl5', nameEn: 'North West Delhi', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
-    { id: 'dl6', nameEn: 'West Delhi', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
-    { id: 'dl7', nameEn: 'South Delhi', phase: 6, pollDate: '2024-05-25', type: 'Lok Sabha' },
-  ],
+  'Puducherry': [
+    { id: 'py1', nameEn: 'Puducherry Region', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'py2', nameEn: 'Karaikal Region', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'py3', nameEn: 'Mahe & Yanam', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+  ]
 };
 
 const stateList = Object.keys(electionData).sort();
@@ -150,7 +75,7 @@ export default function TimelinePage() {
         </div>
         <h1 className="text-3xl font-bold text-india-navy tracking-tight">Election Timeline</h1>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-          Find out when elections happened in your state — based on the 2024 Lok Sabha General Election schedule.
+          Find out when elections are happening in your state — based on the upcoming 2026 State Assembly Elections schedule.
         </p>
       </header>
 
@@ -170,7 +95,7 @@ export default function TimelinePage() {
       {selectedState && (
         <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/30 rounded-lg p-3 border border-dashed">
           <Info className="w-4 h-4 flex-shrink-0" />
-          <span>Showing 2024 Lok Sabha election data for <strong>{selectedState}</strong>. Results declared on June 4, 2024.</span>
+          <span>Showing projected 2026 Assembly election data for <strong>{selectedState}</strong>. Actual dates may vary when announced by ECI.</span>
         </div>
       )}
 
