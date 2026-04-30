@@ -56,7 +56,7 @@ gcloud services enable \
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/vishnu8k/ElectionDosti.git
+git clone https://github.com/vishnusvault/ElectionDosti.git
 cd ElectionDosti
 
 # 2. Install dependencies

@@ -172,7 +172,7 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full architecture diagram and r
 
 ```bash
 # Clone the repository
-git clone https://github.com/vishnu8k/ElectionDosti.git
+git clone https://github.com/vishnusvault/ElectionDosti.git
 cd ElectionDosti
 
 # Install dependencies

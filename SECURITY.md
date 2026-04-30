@@ -8,7 +8,7 @@ Security architecture, secrets management, and vulnerability reporting for Elect
 
 If you discover a security vulnerability in ElectionDosti, please report it responsibly:
 
-- **Email:** vishnu8k@gmail.com
+- **Email:** vishnuvarthan22@gmail.com
 - **Subject line:** `[SECURITY] ElectionDosti — <brief description>`
 - **Response time:** We aim to acknowledge reports within 48 hours
 

@@ -7,7 +7,7 @@ Guidelines for contributing to ElectionDosti. This is a hackathon project — we
 ## Quick Start
 
 ```bash
-git clone https://github.com/vishnu8k/ElectionDosti.git
+git clone https://github.com/vishnusvault/ElectionDosti.git
 cd ElectionDosti
 npm install
 cp .env.example .env.local
