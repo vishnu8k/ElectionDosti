@@ -10,11 +10,11 @@ export function getGeminiModel(systemInstruction?: string) {
   if (!vertex_ai) {
     vertex_ai = new VertexAI({
       project: process.env.GCP_PROJECT_ID,
-      location: 'asia-south1'
+      location: 'us-central1'
     });
   }
   return vertex_ai.getGenerativeModel({
-    model: 'gemini-1.5-pro',
+    model: 'gemini-1.5-flash',
     systemInstruction,
     generationConfig: {
       maxOutputTokens: 1024,
