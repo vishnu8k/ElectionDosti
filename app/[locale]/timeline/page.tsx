@@ -155,7 +155,7 @@ export default function TimelinePage() {
       </header>
 
       <div className="max-w-md mx-auto py-4">
-        <Select onValueChange={(v: string) => setSelectedState(v)} value={selectedState}>
+        <Select onValueChange={(v: string | null) => v && setSelectedState(v)} value={selectedState}>
           <SelectTrigger className="h-12 text-lg">
             <SelectValue placeholder="Select your State" />
           </SelectTrigger>
