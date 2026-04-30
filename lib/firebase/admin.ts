@@ -2,15 +2,9 @@ import * as admin from 'firebase-admin';
 
 if (!admin.apps.length) {
   try {
-    const serviceAccountJson = process.env.FIREBASE_SA_JSON;
-    if (serviceAccountJson) {
-      const serviceAccount = JSON.parse(serviceAccountJson);
-      admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount)
-      });
-    } else {
-      console.warn('FIREBASE_SA_JSON is not set. Admin SDK not initialized.');
-    }
+    admin.initializeApp({
+      credential: admin.credential.applicationDefault()
+    });
   } catch (error) {
     console.error('Firebase admin initialization error', error);
   }

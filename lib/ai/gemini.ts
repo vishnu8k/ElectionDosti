@@ -1,12 +1,18 @@
 import { VertexAI, GenerateContentRequest } from '@google-cloud/vertexai';
 
-// Initialize Vertex with your Cloud project and location
-const vertex_ai = new VertexAI({
-  project: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID as string,
-  location: 'asia-south1'
-});
+let vertex_ai: VertexAI;
 
 export function getGeminiModel(systemInstruction?: string) {
+  if (!process.env.GCP_PROJECT_ID) {
+    throw new Error('GCP_PROJECT_ID environment variable is not set');
+  }
+
+  if (!vertex_ai) {
+    vertex_ai = new VertexAI({
+      project: process.env.GCP_PROJECT_ID,
+      location: 'asia-south1'
+    });
+  }
   return vertex_ai.getGenerativeModel({
     model: 'gemini-1.5-pro',
     systemInstruction,
