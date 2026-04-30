@@ -11,43 +11,43 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Projected timeline data based on upcoming 2026 State Assembly Elections
+// Timeline data based on official 2026 State Assembly Elections schedule
 const electionData: Record<string, Array<{ id: string; nameEn: string; phase: number; pollDate: string; type: string }>> = {
   'Tamil Nadu': [
-    { id: 'tn1', nameEn: 'Chennai District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'tn2', nameEn: 'Coimbatore District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'tn3', nameEn: 'Madurai District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'tn4', nameEn: 'Tiruchirappalli District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'tn5', nameEn: 'Salem District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'tn6', nameEn: 'Tirunelveli District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'tn7', nameEn: 'Erode District', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'tn1', nameEn: 'Chennai District', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'tn2', nameEn: 'Coimbatore District', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'tn3', nameEn: 'Madurai District', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'tn4', nameEn: 'Tiruchirappalli District', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'tn5', nameEn: 'Salem District', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'tn6', nameEn: 'Tirunelveli District', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'tn7', nameEn: 'Erode District', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
   ],
   'West Bengal': [
-    { id: 'wb1', nameEn: 'Bankura & Purulia', phase: 1, pollDate: '2026-03-27', type: 'Assembly' },
-    { id: 'wb2', nameEn: 'Paschim Medinipur', phase: 2, pollDate: '2026-04-01', type: 'Assembly' },
-    { id: 'wb3', nameEn: 'Howrah & Hooghly', phase: 3, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'wb4', nameEn: 'Cooch Behar & Alipurduar', phase: 4, pollDate: '2026-04-10', type: 'Assembly' },
-    { id: 'wb5', nameEn: 'Darjeeling & Jalpaiguri', phase: 5, pollDate: '2026-04-17', type: 'Assembly' },
-    { id: 'wb6', nameEn: 'North 24 Parganas', phase: 6, pollDate: '2026-04-22', type: 'Assembly' },
-    { id: 'wb7', nameEn: 'Kolkata & South 24 Parganas', phase: 7, pollDate: '2026-04-26', type: 'Assembly' },
-    { id: 'wb8', nameEn: 'Birbhum & Murshidabad', phase: 8, pollDate: '2026-04-29', type: 'Assembly' },
+    { id: 'wb1', nameEn: 'Bankura & Purulia', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'wb2', nameEn: 'Paschim Medinipur', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'wb3', nameEn: 'Howrah & Hooghly', phase: 2, pollDate: '2026-04-29', type: 'Assembly' },
+    { id: 'wb4', nameEn: 'Cooch Behar & Alipurduar', phase: 2, pollDate: '2026-04-29', type: 'Assembly' },
+    { id: 'wb5', nameEn: 'Darjeeling & Jalpaiguri', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
+    { id: 'wb6', nameEn: 'North 24 Parganas', phase: 2, pollDate: '2026-04-29', type: 'Assembly' },
+    { id: 'wb7', nameEn: 'Kolkata & South 24 Parganas', phase: 2, pollDate: '2026-04-29', type: 'Assembly' },
+    { id: 'wb8', nameEn: 'Birbhum & Murshidabad', phase: 1, pollDate: '2026-04-23', type: 'Assembly' },
   ],
   'Kerala': [
-    { id: 'kl1', nameEn: 'Thiruvananthapuram', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'kl2', nameEn: 'Ernakulam', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'kl3', nameEn: 'Kozhikode', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'kl4', nameEn: 'Thrissur', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'kl5', nameEn: 'Malappuram', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'kl1', nameEn: 'Thiruvananthapuram', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
+    { id: 'kl2', nameEn: 'Ernakulam', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
+    { id: 'kl3', nameEn: 'Kozhikode', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
+    { id: 'kl4', nameEn: 'Thrissur', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
+    { id: 'kl5', nameEn: 'Malappuram', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
   ],
   'Assam': [
-    { id: 'as1', nameEn: 'Upper Assam', phase: 1, pollDate: '2026-03-27', type: 'Assembly' },
-    { id: 'as2', nameEn: 'Barak Valley & Central Assam', phase: 2, pollDate: '2026-04-01', type: 'Assembly' },
-    { id: 'as3', nameEn: 'Lower Assam', phase: 3, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'as1', nameEn: 'Upper Assam', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
+    { id: 'as2', nameEn: 'Barak Valley & Central Assam', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
+    { id: 'as3', nameEn: 'Lower Assam', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
   ],
   'Puducherry': [
-    { id: 'py1', nameEn: 'Puducherry Region', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'py2', nameEn: 'Karaikal Region', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
-    { id: 'py3', nameEn: 'Mahe & Yanam', phase: 1, pollDate: '2026-04-06', type: 'Assembly' },
+    { id: 'py1', nameEn: 'Puducherry Region', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
+    { id: 'py2', nameEn: 'Karaikal Region', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
+    { id: 'py3', nameEn: 'Mahe & Yanam', phase: 1, pollDate: '2026-04-09', type: 'Assembly' },
   ]
 };
 
@@ -75,7 +75,7 @@ export default function TimelinePage() {
         </div>
         <h1 className="text-3xl font-bold text-india-navy tracking-tight">Election Timeline</h1>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-          Find out when elections are happening in your state — based on the upcoming 2026 State Assembly Elections schedule.
+          Find out when elections are happening in your state — based on the official 2026 State Assembly Elections schedule.
         </p>
       </header>
 
@@ -95,7 +95,7 @@ export default function TimelinePage() {
       {selectedState && (
         <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/30 rounded-lg p-3 border border-dashed">
           <Info className="w-4 h-4 flex-shrink-0" />
-          <span>Showing projected 2026 Assembly election data for <strong>{selectedState}</strong>. Actual dates may vary when announced by ECI.</span>
+          <span>Showing official 2026 Assembly election dates for <strong>{selectedState}</strong>. Counting of votes will take place on May 4, 2026.</span>
         </div>
       )}
 
