@@ -18,21 +18,6 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const data = ChatRequestSchema.parse(body);
     
-    // First, classify intent
-    const intent = await classifyIntent(data.message);
-    
-    if (intent === 'GENERAL') {
-      // If it's general or unrelated, return a simple response
-      return new Response(
-        new ReadableStream({
-          start(controller) {
-            controller.enqueue(new TextEncoder().encode("Hello! I am ElectionDosti. I can help you with election education, myth-busting, election timelines, and finding your polling booth. How can I assist you today?"));
-            controller.close();
-          }
-        }),
-        { headers: { 'Content-Type': 'text/plain; charset=utf-8' } }
-      );
-    }
     
     // Convert history format to Vertex AI format
     const contents = data.history.map(msg => ({
