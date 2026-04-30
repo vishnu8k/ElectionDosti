@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { generateContentStream } from '@/lib/ai/gemini';
 import { getEducationSystemPrompt } from '@/lib/ai/prompts';
-import { classifyIntent } from '@/lib/ai/intent-router';
+
 
 const ChatRequestSchema = z.object({
   message: z.string().min(1).max(500),
